@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>계약서만들기</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'> </script>
+
+</head>
+<body>
+    <h1>공사 하도급 계약서</h1>
+    
+    <p>공 사 명 : <input type="text" id="name_input" placeholder="공사명">
+        <button onclick="showme_this('name_input','names_id')">추가</button> </p>
+    <p>공사일정 : <input type="date" id="dates1" > / <input type="date" id="dates2" >
+        <button onclick="showme_date('dates1','dates2','dates1_id','dates2_id')">추가</button></p>
+    <p>계약금액 : <input type="text" id="price" placeholder="공사금액">
+        <button onclick="showme_this('price','price_id')">추가</button> </p>
+
+    
+    <section>
+        <h2>계약서</h2>
+        <p>공 사 명 : <span id="names_id"></span></p>
+        <p>공사일정 : <span id="dates1_id"></span><span id="dates2_id"></span><span id="dday"></span></p>
+        <p>공사금액 : <span id="price_id" type="number"></span></p>
+    </section>
+
+
+    
+</body>
+
+<script>
+
+    function showme_this(id_name,id_show){
+        var writes = document.getElementById(id_name).value;
+        document.getElementById(id_show).innerHTML = writes;
+    }
+    function showme_date(days1,days2,days1_show,days2_show){
+        var writes1 = document.getElementById(days1).value;
+        var writes2 = document.getElementById(days2).value;
+        document.getElementById(days1_show).innerHTML = writes1;
+        document.getElementById(days2_show).innerHTML = (" ~ "+ writes2);
+
+        var gap = new Date(writes2).getTime() - new Date(writes1).getTime();
+        var result = gap/(1000*60*60*24);
+        document.getElementById("dday").innerHTML=("/ 총 "+result+" 일");
+        console.log(gap);
+        console.log(result);
+        console.log(writes1);
+        console.log(writes2);
+    }
+
+</script>
+
+</html>
